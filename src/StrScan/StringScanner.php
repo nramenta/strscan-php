@@ -58,7 +58,8 @@ class StringScanner
     public function scan($regexp)
     {
         if (preg_match($regexp, $this->getRemainder(), $matches)) {
-            if (mb_strpos($this->getRemainder(), $matches[0]) === 0) {
+            if (strlen($matches[0]) &&
+                mb_strpos($this->getRemainder(), $matches[0]) === 0) {
                 return $this->setState($matches,
                     $this->head + mb_strlen($matches[0]), $this->head);
             }
@@ -80,6 +81,9 @@ class StringScanner
     public function scanUntil($regexp)
     {
         if (preg_match($regexp, $this->getRemainder(), $matches)) {
+            if (!strlen($matches[0])) {
+                return $this->setState();
+            }
             $index = mb_strpos($this->getRemainder(), $matches[0]);
             $this->setState($matches,
                 $this->head + $index + mb_strlen($matches[0]), $this->head);
@@ -161,7 +165,8 @@ class StringScanner
     public function check($regexp)
     {
         if (preg_match($regexp, $this->getRemainder(), $matches)) {
-            if (mb_strpos($this->getRemainder(), $matches[0]) === 0) {
+            if (strlen($matches[0]) &&
+                mb_strpos($this->getRemainder(), $matches[0]) === 0) {
                 return $this->setState($matches);
             }
         }
@@ -182,6 +187,9 @@ class StringScanner
     public function checkUntil($regexp)
     {
         if (preg_match($regexp, $this->getRemainder(), $matches)) {
+            if (!strlen($matches[0])) {
+                return $this->setState();
+            }
             $index = mb_strpos($this->getRemainder(), $matches[0]);
             $this->setState($matches);
             return mb_substr($this->source, $this->head,

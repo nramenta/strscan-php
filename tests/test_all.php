@@ -121,3 +121,10 @@ assert('$s->checkUntil("/12/") == "Fri Dec 12"');
 assert('$s->getPosition() == 0');
 assert('$s->getMatch() == "12"');
 
+$s = new StringScanner("The end.");
+assert('$s->scan("/\s*/") === NULL');
+assert('$s->scan("/\w+/") === "The"');
+assert('$s->scan("/\s+/") === " "');
+assert('$s->scan("/\w*/") === "end"');
+assert('$s->scan("/./s") === "."');
+
