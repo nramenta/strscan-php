@@ -30,6 +30,6 @@ $s->hasTerminated();           # => true
 ## License
 strscan-php is released under the [MIT license](http://opensource.org/licenses/MIT).
 
-## Acknowledgements
+## Acknowledgments
 The original strscan-js was written by Sam Stephenson.
 
