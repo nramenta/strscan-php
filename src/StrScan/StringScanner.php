@@ -25,7 +25,7 @@ class StringScanner
     /**
      * Creates a new StringScanner with a source string.
      *
-     * @param string $source   The source string.
+     * @param string $source The source string.
      */
     public function __construct($source = '')
     {
