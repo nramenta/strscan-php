@@ -34,6 +34,18 @@ class StringScanner
                 'string expected, got `' . gettype($source) . '` instead');
         }
         mb_internal_encoding('UTF-8');
+        $this->setSource($source);
+    }
+
+    /**
+     * Sets the source string.
+     *
+     * @param string $source The source string
+     *
+     * @return StringScanner The StringScanner object
+     */
+    public function setSource($source)
+    {
         $this->source = $source;
         $this->length = mb_strlen($source);
         $this->head = 0;
@@ -41,6 +53,8 @@ class StringScanner
         $this->captures = array();
         $this->match = null;
         $this->reset();
+
+        return $this;
     }
 
     /* Scanning for matches */
