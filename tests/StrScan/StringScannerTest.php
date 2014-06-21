@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../../src/StrScan/StringScanner.php';
-
 use StrScan\StringScanner;
 
 class StringScannerTest extends PHPUnit_Framework_TestCase
